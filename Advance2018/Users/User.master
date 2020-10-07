@@ -1,0 +1,223 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="User.master.cs" Inherits="MainMasterPage"  %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
+<!DOCTYPE html>
+
+
+
+<form runat="server" autocomplete="off" onkeypress="return DisableEnterKey(event)" >
+<cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></cc1:ToolkitScriptManager>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Online Bank Management System</title>
+
+
+      <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+    <link href="../css/MStyle.css" rel="stylesheet" />
+    <script src="../js/jquery.js" ></script>
+      <script src="../js/bootstrap.min.js" ></script>
+
+    
+
+    <asp:ContentPlaceHolder id="head" runat="server" >
+
+    </asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="master" runat="server"></asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style2 {
+            height: 100px;
+            width: 100%;
+        }
+       
+        .auto-style3 {
+            width: 95%
+        }
+       
+    </style>
+    
+</head>
+  
+<body onkeypress="return DisableEnterKey(event)">
+    
+   <asp:UpdatePanel ID="panel3" runat="server"><ContentTemplate> 
+    
+         <div id="page" class="center">
+            <div id="container" >
+              
+                        <div id="main" class="auto-style3" >
+                            <div id="top">
+
+<div class="rw"   >
+    <div class="auto-style2">
+        <div class="container-fluid">
+    <div class="col-md-12">
+        <h2 style="float: left; color: #fff; margin-left:80px; padding-top: 20px;">Online Banking</h2>
+        </div>
+           
+    
+        </div>
+        </div>
+
+
+</div>
+<asp:UpdatePanel ID="panel4" runat="server"> <ContentTemplate>
+   <nav class="navbar "   style="border-radius: 0; background-color:dodgerblue; " >
+  <div class="container-fluid" >
+    
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+         <ul class="nav navbar-nav navbar-left">
+                
+        <li class="dropdown">
+
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="navbar-toggler-icon"></span></a>
+       
+          <ul class="dropdown-menu">
+            
+               <li><a href="#" id="btnBackup" data-toggle="modal" runat="server" data-target="#Backup" >Back Up</a></li>
+               <li>  <a href="#" id="BtnCSV"  runat="server" data-toggle="modal" data-target="#MoImport"> Import CSV</a> </li>
+                <li></li>
+                <li>
+                    <a href="AccountBalance.aspx">View Loan Balances</a>
+                </li>
+                <li>
+                    <a href="#" >About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav">
+
+        <li><a href="Home.aspx">Home <span class="sr-only">(current)</span></a></li>
+        
+          <li><a href="Customer.aspx">Customer</a></li>
+          <li><a href="Loan.aspx">Loans</a></li>
+          <li><a href="#">Report</a></li>
+          <li><a href="LoanBalance.aspx">Balances</a></li>
+        
+      </ul>
+   
+      <ul class="nav navbar-nav navbar-right">
+          <li> <h4><asp:Label  ID="LogPerson" style="border-right:5px; margin-top:14px;" runat="server"  class="label label-danger " Text="" ></asp:Label></h4>  </li>      
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Option <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+              <li><asp:Button ID="Lo" runat="server" OnClick="Lo_Click" Text="LogOut" class="btn btn-primary" formnovalidate="formnovalidate" UseSubmitBehavior="False" /> </li>
+
+            
+            
+          </ul>
+            
+        </li>
+      </ul>
+       
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+
+</nav>
+    </ContentTemplate></asp:UpdatePanel>
+                                <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server" ViewStateMode="Enabled">
+                    </asp:ContentPlaceHolder>
+                           </div>               
+                    
+                    
+                            
+                </div>
+                
+                        </div>
+                  
+                
+            </div>
+    
+<!--- --------------------------------------Modal------ Backup------------------------------------------------------------>
+       
+            <div class="  col-xs-12 " style="left: 0px; top: -3px; width: 97%; height: 23px">                
+
+                <div class="modal" id="Backup"  tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal"> &times;</button>
+                                <h4 class="modal-title  text-center">Back Up </h4>
+                            </div>
+                            <div class="modal-body"> 
+                                
+                                     <div>  
+                                         <asp:Button ID="BtnBDatabase" runat="server" data-dismiss="modal" class="btn btn-primary" Text="BackUp Database"  OnClick="btnPath_Click" formnovalidate="formnovalidate" />
+                                          <asp:Button ID="BtnRestore" runat="server" class="btn btn-primary" Text="Restore Database"  formnovalidate="formnovalidate" />
+                                 </div>    
+                                                     
+                            </div>
+
+                            <div class="modal-footer">
+                                <button class="btn btn-primary">Add Path</button>
+                                <button class="btn btn-primary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                        
+
+                    </div>
+
+                </div>
+
+            
+
+        </div>                      
+   <!-- ----------------------------------modal import-------------------->
+
+
+
+                <div class="modal" id="MoImport" >
+                    <div class="modal-dialog" >
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal"> &times;</button>
+                                <h4 class="modal-title  text-center">Import</h4>
+                            </div>
+                            <div class="modal-body" >             
+                                         
+                                        <asp:FileUpload ID="FileUpload1" type="text" runat="server" CssClass="bg-primary btn "></asp:FileUpload>                              
+                                                                     
+                                             
+                            </div>
+
+                            <div class="modal-footer">
+                                
+                                <asp:Button ID="btnImport" CssClass="btn btn-default" runat="server" data-dismiss="modal" Text="Import"     OnClick="btnImport_Click"  formnovalidate="formnovalidate"></asp:Button>
+
+                                <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                        
+
+                    </div>
+
+
+           
+
+        </div>                      
+
+
+
+ 
+    
+    
+    
+  <!-- ----------------------Confirm modal- ends---------------------------->
+                   
+    </div>
+        </ContentTemplate></asp:UpdatePanel>
+        </body>
+     
+        
+</html>
+ </form> 
